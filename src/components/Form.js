@@ -4,9 +4,8 @@ import {Picker} from '@react-native-community/picker';
 import RNPickerSelect from 'react-native-picker-select';
 import colors from '../utils/colors';
 
-export default function Form() {
-  const [PickerMonths, setPickerMonths] = useState('');
-
+export default function Form(props) {
+  const {setCapital, setInterest, setMonths} = props;
   return (
     <View style={styles.viewForm}>
       <View style={styles.viewInputs}>
@@ -14,20 +13,22 @@ export default function Form() {
           placeholder="Cantidad a pedir"
           keyboardType="numeric"
           style={styles.input}
+          onChange={(value) => setCapital(value.nativeEvent.text)}
         />
         <TextInput
           placeholder="Interes %"
           keyboardType="numeric"
           style={[styles.input, styles.inputPercentage]} //usar varios estilos envolver en un array todos los estilos
+          onChange={(value) => setInterest(value.nativeEvent.text)}
         />
       </View>
       <View>
         <RNPickerSelect
           style={picketSelectStyles}
-          onValueChange={(value) => setPickerMonths(value)}
-          useNativeAndroidPickerStyle={false}
+          onValueChange={(value) => setMonths(value)}
+          useNativeAndroidPickerStyle={false} //permite usar todos los estilos para android
           placeholder={{
-            label: 'Seleccióna los plazos...',
+            label: 'Selecciona los plazos...',
             value: null,
           }}
           items={[

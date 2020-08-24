@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
-import {Picker} from '@react-native-community/picker';
 import RNPickerSelect from 'react-native-picker-select';
 import colors from '../utils/colors';
 
